@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Choose your path Dr.k!</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background-color: lightblue;
+      padding: 20px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #story {
+      margin: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Choose your path Dr.k!</h1>
+
+<div id="story"></div>
+<div id="buttons"></div>
+
+<script>
+
+function showScene(text, choices) {
+  document.getElementById("story").innerHTML = text;
+
+  let buttonsHTML = "";
+  for (let i = 0; i < choices.length; i++) {
+    buttonsHTML += "<button onclick='" + choices[i].next + "()'>" + choices[i].text + "</button>";
+  }
+  document.getElementById("buttons").innerHTML = buttonsHTML;
+}
+
+// START
+function start() {
+  showScene(
+    "Jay sits in his room with his phone in his hand.<br><br>" +
+    "He just posted a new video and is staring at the screen.<br><br>" +
+    "\"Come on... go up,\" he whispers.<br><br>" +
+    "200 views... 210... 215...<br><br>" +
+    "Jay sighs. \"Why am I not blowing up yet?\"<br><br>" +
+    "His friend Alex walks in and watches him refresh again and again.<br><br>" +
+    "\"You’ve been doing that for like 20 minutes,\" Alex says.<br><br>" +
+    "What should Jay do?",
+    [
+      {text: "Keep checking views", next: "checkViews"},
+      {text: "Start making a video he actually enjoys", next: "makeVideo"}
+    ]
+  );
+}
+
+// PATH 1
+function checkViews() {
+  showScene(
+    "Jay keeps refreshing his phone non stop.<br><br>" +
+    "300 views... 400... 520...<br><br>" +
+    "\"Yes! It’s going up!\" he says, but his face doesn’t even look happy.<br><br>" +
+    "Alex watches him closely.<br><br>" +
+    "\"You don’t even smile anymore when you make videos,\" Alex says.<br><br>" +
+    "Jay shrugs. \"It doesn’t matter. The numbers matter.\"<br><br>" +
+    "\"Do they actually make you happy though?\" Alex asks.<br><br>" +
+    "Jay ignores him and keeps refreshing.",
+    [
+      {text: "Ignore Alex and keep chasing numbers", next: "ending1"},
+      {text: "Stop and listen to Alex", next: "park"}
+    ]
+  );
+}
+
+// PATH 2
+function makeVideo() {
+  showScene(
+    "Jay puts his phone down and opens his camera.<br><br>" +
+    "He starts thinking about what he actually enjoys making.<br><br>" +
+    "He remembers when he first started, he used to laugh and have fun.<br><br>" +
+    "He begins recording something real, something he actually cares about.<br><br>" +
+    "But suddenly... his phone buzzes.<br><br>" +
+    "The video he posted earlier isn’t getting many views.",
+    [
+      {text: "Stop and go back to checking views", next: "checkViews"},
+      {text: "Ignore it and keep creating", next: "ending3"}
+    ]
+  );
+}
+
+// MIDDLE PATH
+function park() {
+  showScene(
+    "Jay finally puts his phone down and walks outside with Alex.<br><br>" +
+    "They sit on a bench in the park.<br><br>" +
+    "For the first time all day, Jay isn’t looking at numbers.<br><br>" +
+    "\"You used to actually enjoy this,\" Alex says.<br><br>" +
+    "\"Now all you do is count views like they mean everything.\"<br><br>" +
+    "Jay looks down at his phone... then at the sky.<br><br>" +
+    "\"I don’t even feel happy anymore,\" he admits.",
+    [
+      {text: "Say numbers still matter more", next: "ending2"},
+      {text: "Decide to change and be patient", next: "ending3"}
+    ]
+  );
+}
+
+// ENDINGS
+function ending1() {
+  showScene(
+    "Jay keeps chasing numbers every single day.<br><br>" +
+    "His views grow bigger and bigger...<br><br>" +
+    "But no matter how high they go, it never feels like enough.<br><br>" +
+    "He sits alone, refreshing his phone again.<br><br>" +
+    "<b>Lesson: When you only chase numbers, you lose what really matters.</b>",
+    [
+      {text: "Restart", next: "start"}
+    ]
+  );
+}
+
+function ending2() {
+  showScene(
+    "Jay ignores everything Alex said and goes back to his room.<br><br>" +
+    "Days pass... then weeks.<br><br>" +
+    "He gains more views, more followers...<br><br>" +
+    "But he feels more empty than ever.<br><br>" +
+    "Nothing feels exciting anymore.<br><br>" +
+    "<b>Lesson: You can have everything on the outside and still feel nothing inside.</b>",
+    [
+      {text: "Restart", next: "start"}
+    ]
+  );
+}
+
+function ending3() {
+  showScene(
+    "Jay decides to stop focusing on numbers.<br><br>" +
+    "He makes videos that actually mean something to him.<br><br>" +
+    "At first, the views are low... really low.<br><br>" +
+    "But for the first time in a long time... he smiles while recording.<br><br>" +
+    "Slowly, people start noticing his realness.<br><br>" +
+    "<b>Lesson: Be patient. Real success takes time, but it actually feels worth it.</b>",
+    [
+      {text: "Restart", next: "start"}
+    ]
+  );
+}
+
+// START GAME
+start();
+
+</script>
+
+</body>
+</html>
